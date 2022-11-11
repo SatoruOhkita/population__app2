@@ -2,6 +2,21 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+// urlからデータを読み込む
+fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=7708072")
+  // データを受け取って加工する（整形）
+  .then((response) => {
+    // .jsonと書くことで，連想配列に変換する
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  // 通信にエラーが発生した場合errorを吐き出す。
+  .catch((error) => {
+    console.log(error);
+  });
+
 export default function Home() {
   return (
     <div className={styles.container}>
